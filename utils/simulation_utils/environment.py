@@ -1,6 +1,9 @@
 import numpy as np
 
-from utils.simulation_utils.obstacle import Obstacle, CircularObstacle, BoxObstacle
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+from OCR.utils.simulation_utils.obstacle import Obstacle, CircularObstacle, BoxObstacle
 
 class Environment:
     """A base class for representing an environment with obstacles.

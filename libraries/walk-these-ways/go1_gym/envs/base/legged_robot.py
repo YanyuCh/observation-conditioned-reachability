@@ -18,9 +18,10 @@ from .legged_robot_config import Cfg
 from scipy.spatial.transform import Rotation
 
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '../../../../..'))
-from utils.simulation_utils.environment import CustomGroundEnvironment
-from utils.simulation_utils.obstacle import CircularObstacle, BoxObstacle
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../../../../..'))
+from OCR.utils.simulation_utils.environment import CustomGroundEnvironment
+from OCR.utils.simulation_utils.obstacle import CircularObstacle, BoxObstacle
 
 
 class LeggedRobot(BaseTask):
@@ -1769,7 +1770,7 @@ class LeggedRobot(BaseTask):
             # create a grid of robots
             num_cols = np.floor(np.sqrt(len(env_ids)))
             num_rows = np.ceil(self.num_envs / num_cols)
-            xx, yy = torch.meshgrid(torch.arange(num_rows), torch.arange(num_cols))
+            xx, yy = torch.meshgrid(torch.arange(num_rows, device=self.device), torch.arange(num_cols, device=self.device))
             spacing = cfg.env.env_spacing
             self.env_origins[env_ids, 0] = spacing * xx.flatten()[:len(env_ids)]
             self.env_origins[env_ids, 1] = spacing * yy.flatten()[:len(env_ids)]

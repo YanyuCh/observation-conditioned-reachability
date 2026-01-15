@@ -4,7 +4,10 @@ import numpy as np
 from scipy.ndimage import binary_dilation, minimum_filter
 
 # from utils.hj_reachability_utils.environment import Environment
-from utils.dynamics import Dynamics
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+from OCR.utils.dynamics import Dynamics
 
 class NavigationTask:
     """A navigation task that specifies a goal position.
